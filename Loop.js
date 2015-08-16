@@ -1,22 +1,15 @@
-var gLoop;
 var fps = 60;
-var gamePaused = false;
+if (gamePaused == undefined) var gamePaused = false;
 
 function pauseGame() {
-  if (!gamePaused) {
-    gLoop = clearTimeout(gLoop);
-    gamePaused = true;
-  } 
-  else if (gamePaused) {
-    gLoop = setTimeout(GameLoop, speed);
-    gamePaused = false;
-  } 
+  gamePaused = !gamePaused;
+  if (!gamePaused) GameLoop();
 }
 
 function GameLoop() {
   clear(mainCanvas);
   step();
-  gLoop = setTimeout(GameLoop, 1000/fps);
+  if (!gamePaused) setTimeout(GameLoop, 1000/fps);
 }
 
 GameLoop();

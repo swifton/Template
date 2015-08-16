@@ -3,6 +3,8 @@ function upKeyDown() {}
 function leftKeyDown() {}
 function rightKeyDown() {}
 function someKeyDown() {}
+function spaceDown() {}
+function escapeDown() {}
 
 function downKeyUp() {}
 function upKeyUp() {}
@@ -12,7 +14,6 @@ function someKeyUp() {}
 
 
 function doKeyDown(e) {
-if (gamePaused == true) {return;}
   var i = e.keyCode;
   //console.log(i);
   someKeyDown();
@@ -21,10 +22,11 @@ if (gamePaused == true) {return;}
   if (i == 39) rightKeyDown();
   if (i == 38) upKeyDown();
   if (i == 40) downKeyDown();
+  if (i == 32) spaceDown();
+  if (i == 27) escapeDown();
 }
 
 function doKeyUp(e) {
-  if (gamePaused == true) {return;}
   var i = e.keyCode;
   //console.log(i);
   someKeyUp();
@@ -34,6 +36,8 @@ function doKeyUp(e) {
   if (i == 38) upKeyUp();
   if (i == 40) downKeyUp();
 }
+
+function mouseClick(x, y) {}
 
 function clickReporter(e) {
   var mousePos = getMousePos(mainCanvas, e);

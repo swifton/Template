@@ -49,3 +49,18 @@ function drawImage(x, y, source, angle, context) {
   context.restore();
 }
 
+function drawCircle(x, y, r, color, context) {
+  var context = context || mainContext;
+  context.beginPath();
+  context.arc(x, y, r, 0, 2 * Math.PI, false);
+  context.fillStyle = color;
+  context.fill();
+}
+
+function drawOpaqueRectangle(x1, y1, dx, dy, color, context) {
+  var context = context || mainContext;
+  context.beginPath();
+  context.fillStyle = color;
+  context.fillRect(x1, y1, dx, dy);
+  context.fill();
+}
