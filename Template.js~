@@ -1,0 +1,23 @@
+var gLoop;
+var mainCanvas = document.getElementById('canvas');
+var context = mainCanvas.getContext('2d');
+var fps = 60;
+var gamePaused = false;
+
+function pauseGame() {
+  if (!gamePaused) {
+    gLoop = clearTimeout(gLoop);
+    gamePaused = true;
+  } else if (gamePaused) {
+    gLoop = setTimeout(GameLoop, speed);
+    gamePaused = false;
+  }
+}
+
+function GameLoop() {
+	clear(c);
+	draw();
+	gLoop = setTimeout(GameLoop, 1000/fps);
+}
+
+GameLoop();

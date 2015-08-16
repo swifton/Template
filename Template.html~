@@ -1,0 +1,27 @@
+<html>  
+  <head>  
+    <title>Template</title>  
+  </head>  
+
+  <body> 
+
+    <canvas id='canvas'></canvas>
+
+    <!-- Platform layer -->
+    <script src="../prototype/Canvas.js"></script>
+    <script src="../prototype/Input.js"></script>
+    <script src="../prototype/FileSaver.js"></script>
+    <script src="../prototype/Files.js"></script>
+
+    <!-- Some useful functions -->
+    <script src="../prototype/Utils.js"></script>
+    <script src="../prototype/Figures.js"></script>
+
+    <!-- Game code -->
+
+    <!-- This file launches the game -->
+    <script src="../prototype/Loop.js"></script>
+
+
+  </body>  
+</html>  
