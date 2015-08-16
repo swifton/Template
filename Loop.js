@@ -6,6 +6,8 @@ function pauseGame() {
   if (!gamePaused) GameLoop();
 }
 
+function step() {}
+
 function GameLoop() {
   clear(mainCanvas);
   step();
