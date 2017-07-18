@@ -1,4 +1,5 @@
 function line(start, end, color, context) {
+  context = context || mainContext;
   drawLine(start[0], start[1], end[0], end[1], color, context);
 }
 
@@ -9,10 +10,10 @@ function tetragon(LT, RT, LB, RB, color, context) {
   line(RT, RB, color, context);
 }
 
-function rectangle(LT, length, height, color, context) {
+function rectangle(LT, lent, height, color, context) {
   var LB = add(LT, [0, height]);
-  var RB = add(LB, [length, 0]);
-  var RT = add(LT, [length, 0]);
+  var RB = add(LB, [lent, 0]);
+  var RT = add(LT, [lent, 0]);
 
   tetragon(LT, RT, LB, RB, color, context);
 }

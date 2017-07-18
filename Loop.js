@@ -6,12 +6,13 @@ function pauseGame() {
   if (!gamePaused) GameLoop();
 }
 
-function step() {}
-
 function GameLoop() {
-  clear(mainCanvas);
-  step();
   if (!gamePaused) setTimeout(GameLoop, 1000/fps);
+  //clear(mainCanvas);
+  step();
 }
 
-GameLoop();
+
+if (realtime) {
+	GameLoop();
+}

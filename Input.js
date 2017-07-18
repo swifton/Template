@@ -5,6 +5,12 @@ function rightKeyDown() {}
 function someKeyDown() {}
 function spaceDown() {}
 function escapeDown() {}
+function WDown() {}
+function ADown() {}
+function SDown() {}
+function DDown() {}
+function QDown() {}
+function EDown() {}
 
 function downKeyUp() {}
 function upKeyUp() {}
@@ -24,6 +30,12 @@ function doKeyDown(e) {
   if (i == 40) downKeyDown();
   if (i == 32) spaceDown();
   if (i == 27) escapeDown();
+  if (i == 87) WDown();
+  if (i == 65) ADown();
+  if (i == 83) SDown();
+  if (i == 68) DDown();
+  if (i == 81) QDown();
+  if (i == 69) EDown();
 }
 
 function doKeyUp(e) {
