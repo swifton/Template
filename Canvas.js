@@ -1,18 +1,18 @@
-var mainCanvas = document.getElementById('canvas');
-var mainContext = mainCanvas.getContext('2d');
+var main_canvas = document.getElementById('canvas');
+var main_context = main_canvas.getContext('2d');
 
-function resizeCanvas(canvas) {
-  var canvas = canvas || mainCanvas;
-  var wid = window.innerWidth;
-  var heit = window.innerHeight;
-  canvas.width = wid;
-  canvas.height = heit;
+function resize_canvas(canvas) {
+  var canvas = canvas || main_canvas;
+  var canvas_wid = window.innerWidth;
+  var canvas_heit = window.innerHeight;
+  canvas.width = canvas_wid;
+  canvas.height = canvas_heit;
 }
 
-function clear(canvas, color) {
-  var canvas = canvas || mainCanvas;
+function clear_canvas(canvas, color) {
+  var canvas = canvas || main_canvas;
   context = canvas.getContext('2d');
-  context.fillStyle = color || '#d0e7f9';
+  context.fillStyle = color || '#333333';
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.beginPath();
   context.rect(0, 0, canvas.width, canvas.height);
@@ -20,8 +20,8 @@ function clear(canvas, color) {
   context.fill();
 }
 
-function drawLine(x1, y1, x2, y2, color, thickness, context) {
-  var context = context || mainContext;
+function draw_line(x1, y1, x2, y2, color, thickness, context) {
+  var context = context || main_context;
   var color = color || "black";
   context.beginPath();
   context.lineWidth = thickness || 2;
@@ -31,15 +31,15 @@ function drawLine(x1, y1, x2, y2, color, thickness, context) {
   context.stroke();
 }
 
-function drawLabel(label, x, y, context) {
-  var context = context || mainContext;
+function draw_label(label, x, y, context) {
+  var context = context || main_context;
   context.fillStyle = "blue";
   context.font = "bold 20px Arial";
   context.fillText(label, x, y);
 }
 
-function drawImage(x, y, source, angle, context) {
-  var context = context || mainContext;
+function draw_image(x, y, source, angle, context) {
+  var context = context || main_context;
   context.save();
   context.translate(x, y); 
   context.rotate(angle);
@@ -49,8 +49,8 @@ function drawImage(x, y, source, angle, context) {
   context.restore();
 }
 
-function drawCircle(x, y, r, color, thickness, context) {
-  var context = context || mainContext;
+function draw_circle(x, y, r, color, thickness, context) {
+  var context = context || main_context;
   context.beginPath();
   context.strokeStyle = color || "black";
   context.lineWidth = thickness || 2;
@@ -58,8 +58,8 @@ function drawCircle(x, y, r, color, thickness, context) {
   context.stroke();
 }
 
-function drawFilledCircle(x, y, r, color, thickness, context) {
-  var context = context || mainContext;
+function draw_filled_circle(x, y, r, color, thickness, context) {
+  var context = context || main_context;
   context.beginPath();
   context.fillStyle = color || "black";
   //context.lineWidth = thickness || 2;
@@ -68,21 +68,21 @@ function drawFilledCircle(x, y, r, color, thickness, context) {
 }
 
 
-function drawOpaqueRectangle(x1, y1, dx, dy, color, context) {
-  var context = context || mainContext;
+function draw_opaque_rectangle(x1, y1, dx, dy, color, context) {
+  var context = context || main_context;
   context.beginPath();
   context.fillStyle = color || 'black';
   context.fillRect(x1, y1, dx, dy);
   context.fill();
 }
 
-function drawOpaqueRectangleOptimized(x1, y1, dx, dy, color, context) {
-  mainContext.fillStyle = color || 'black';
-  mainContext.fillRect(x1, y1, dx, dy);
+function draw_opaque_rectangle_optimized(x1, y1, dx, dy, color, context) {
+  main_context.fillStyle = color || 'black';
+  main_context.fillRect(x1, y1, dx, dy);
 }
 
-function drawPixel(x, y, color, context) {
-	var context = context || mainContext;
+function draw_pixel(x, y, color, context) {
+	var context = context || main_context;
 	var imgData = context.createImageData(1,1);
 	imgData.data[0] = color[0];
 	imgData.data[1] = color[1];
@@ -91,8 +91,8 @@ function drawPixel(x, y, color, context) {
 	context.putImageData(imgData, x, y);
 }
 
-function drawPixels(x, y, color, context) {
-	var context = context || mainContext;
+function draw_pixels(x, y, color, context) {
+	var context = context || main_context;
 	var imgData = context.createImageData(1,1);
 	imgData.data[0] = color[0];
 	imgData.data[1] = color[1];

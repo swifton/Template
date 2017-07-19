@@ -1,18 +1,18 @@
 var fps = 60;
-if (gamePaused == undefined) var gamePaused = false;
+if (game_paused == undefined) var game_paused = false;
 
-function pauseGame() {
-  gamePaused = !gamePaused;
-  if (!gamePaused) GameLoop();
+function pause_game() {
+  game_paused = !game_paused;
+  if (!game_paused) game_loop();
 }
 
-function GameLoop() {
-  if (!gamePaused) setTimeout(GameLoop, 1000/fps);
+function game_loop() {
+  if (!game_paused) setTimeout(game_loop, 1000 / fps);
   //clear(mainCanvas);
   step();
 }
 
 
 if (realtime) {
-	GameLoop();
+	game_loop();
 }

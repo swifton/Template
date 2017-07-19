@@ -6,15 +6,11 @@ function sub(p1, p2) {
   return add(p1, [-p2[0], -p2[1]]);
 }
 
-function pOnCir(center, radius, angle) {
+function point_on_circle(center, radius, angle) {
   return add(center, [radius * Math.cos(angle), -radius * Math.sin(angle)]);
 }
 
-function print(output) {
-  console.log(output);
-}
-
-function randomInteger(min, max) { // Including min, excluding max
+function random_integer(min, max) { // Including min, excluding max
 	return (min + Math.floor(Math.random() * (max - min)));
 }
 
