@@ -1,6 +1,6 @@
 function line(start, end, color, context) {
-  context = context || mainContext;
-  drawLine(start[0], start[1], end[0], end[1], color, context);
+  context = context || main_context;
+  draw_line(start[0], start[1], end[0], end[1], color, context);
 }
 
 function tetragon(LT, RT, LB, RB, color, context) {

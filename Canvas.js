@@ -31,9 +31,9 @@ function draw_line(x1, y1, x2, y2, color, thickness, context) {
   context.stroke();
 }
 
-function draw_label(label, x, y, context) {
+function draw_label(label, x, y, color, context) {
   var context = context || main_context;
-  context.fillStyle = "blue";
+  context.fillStyle = color || "blue";
   context.font = "bold 20px Arial";
   context.fillText(label, x, y);
 }
