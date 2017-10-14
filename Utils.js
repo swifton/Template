@@ -20,3 +20,7 @@ Array.prototype.remove = function(from, to) {
   this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
+
+function clone(object) {
+	return JSON.parse(JSON.stringify(object));
+}
