@@ -17,17 +17,6 @@ function rectangle(LT, lent, height, color, thickness, opacity, context) {
   tetragon(LT, RT, LB, RB, color, thickness, opacity, context);
 }
 
-// shitty function, rewrite or delete
-function grid(diameter, context) {
-  for (var i = 0; i <= wid/diameter; i++) {
-    drawLine(i * diameter, 0, i * diameter, heit, context);
-  }
-
-  for (var i = 0; i < heit/diameter; i++) {
-    drawLine(0,i * diameter, wid, i * diameter);
-  }
-}
-
 function draw_line_texture(color, thickness, opacity, center_x, center_y, angle, wid, lent, gap, context) {
   if (opacity == undefined) var opacity = 1;
   var context = context || main_context;
