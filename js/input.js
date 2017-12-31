@@ -1,4 +1,6 @@
 var pressed_keys = {};
+var drag_start = {x: 0, y:0};
+var mouse_is_down = false;
 
 function do_key_down(e) {
   var i = e.keyCode;
@@ -18,6 +20,11 @@ function do_key_down(e) {
   if (i == 68 && typeof d_down != "undefined") d_down();
   if (i == 81 && typeof q_down != "undefined") q_down();
   if (i == 69 && typeof e_down != "undefined") e_down();
+  if (i == 82 && typeof r_down != "undefined") r_down();
+  if (i == 9 && typeof tab_down != "undefined") tab_down();
+  if (i == 13 && typeof enter_down != "undefined") enter_down();
+  
+  if (typeof handle_input != "undefined") handle_input("keydown", i);
 }
 
 function do_key_up(e) {
@@ -28,36 +35,48 @@ function do_key_up(e) {
   if (i == 39 && typeof right_key_up != "undefined") right_key_up();
   if (i == 38 && typeof up_key_up != "undefined") up_key_up();
   if (i == 40 && typeof down_key_up != "undefined") down_key_up();
+  
+  if (typeof handle_input != "undefined") handle_input("keyup", i);
 }
 
 var mouse = {x: 0, y: 0};
 
-function get_mouse_pos(canvas, evt) {
+function get_mouse_pos(canvas, e) {
   var rect = canvas.getBoundingClientRect();
   return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
   };
 }
 
 main_canvas.addEventListener('mousemove', function(e){
 	mouse = get_mouse_pos(main_canvas, e); 
-	if (typeof mouse_move != "undefined") mouse_move();
+	var mouse_pos = get_mouse_pos(main_canvas, e);
+	if (typeof mouse_move != "undefined") mouse_move(mouse_pos.x, mouse_pos.y);
+	if (typeof handle_input != "undefined") handle_input("mousemove");
 }, false);
 
 main_canvas.addEventListener('mousedown', function(e) {
+	mouse_is_down = true;
+	mouse = get_mouse_pos(main_canvas, e);
 	var mouse_pos = get_mouse_pos(main_canvas, e); 
+	drag_start = {x: mouse_pos.x, y: mouse_pos.y};
 	if (typeof mouse_down != "undefined") mouse_down(mouse_pos.x, mouse_pos.y);
+	if (typeof handle_input != "undefined") handle_input("mousedown", [mouse_pos.x, mouse_pos.y]);
 }, false);
 
 main_canvas.addEventListener('mouseup', function(e) {
+	mouse_is_down = false;
+	mouse = get_mouse_pos(main_canvas, e); 
 	var mouse_pos = get_mouse_pos(main_canvas, e); 
 	if (typeof mouse_up != "undefined") mouse_up(mouse_pos.x, mouse_pos.y);
+	if (typeof handle_input != "undefined") handle_input("mouseup", [mouse_pos.x, mouse_pos.y]);
 }, false);
 
-window.addEventListener('mousewheel',function(event){
+window.addEventListener('mousewheel', function(event){
 	var direction = Math.sign(event.wheelDeltaY); 
-	if (typeof scroll != "undefined") scroll(direction); 
+	if (typeof mouse_scroll != "undefined") mouse_scroll(direction); 
+	if (typeof handle_input != "undefined") handle_input("mousewheel", direction);
 	return false;
 }, false);
 

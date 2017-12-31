@@ -24,7 +24,7 @@ function slider(left_x, left_y, lent, position, variable, min, max, name) {
 		rectangle([left_x, left_y], this.lent + 10, 10);
 		rectangle([left_x + this.position, left_y - 10], 10, 30);
 		
-		draw_label(this.name, this.left_x, this.left_y - 10, "red");
+		draw_label(this.name, this.left_x, this.left_y - 10, "black");
 	}
 	this.draw = draw;
 	
