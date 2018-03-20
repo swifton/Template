@@ -35,6 +35,28 @@ function draw_line(x1, y1, x2, y2, color, thickness, opacity, context) {
   context.stroke();
 }
 
+function draw_line_optimized(x1, y1, x2, y2, color, thickness, opacity, context) {
+  if (opacity == undefined) var opacity = 1;
+  var context = context || main_context;
+  var color = color || "black";
+  context.lineWidth = thickness || 2;
+  context.globalAlpha = opacity;
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.strokeStyle = color;
+}
+
+function rectangle_optimized(LT, lent, height, color, thickness, opacity, context) {
+  var LB = add(LT, [0, height]);
+  var RB = add(LB, [lent, 0]);
+  var RT = add(LT, [lent, 0]);
+
+  draw_line_optimized(LT[0], LT[1], RT[0], RT[1], color, thickness, opacity, context);
+  draw_line_optimized(LB[0], LB[1], RB[0], RB[1], color, thickness, opacity, context);
+  draw_line_optimized(LT[0], LT[1], LB[0], LB[1], color, thickness, opacity, context);
+  draw_line_optimized(RT[0], RT[1], RB[0], RB[1], color, thickness, opacity, context);
+}
+
 function draw_arrow(x1, y1, x2, y2, end, size, wid, color, thickness, opacity, context) {
   // end: 1 - first (x1, y1), 2 - second (x2, y2), 3 - both
   if (end == undefined) end = end || 2;
@@ -125,13 +147,12 @@ function draw_arc(x, y, r, a1, a2, color, thickness, opacity, context) {
   context.stroke();
 }
 
-function draw_filled_circle(x, y, r, color, thickness, opacity, context) {
+function draw_filled_circle(x, y, r, color, opacity, context) {
   if (opacity == undefined) var opacity = 1;
   var context = context || main_context;
   context.beginPath();
   context.fillStyle = color || "black";
   context.globalAlpha = opacity;
-  //context.lineWidth = thickness || 2;
   context.arc(x, y, r, 0, 2 * Math.PI);
   context.fill();
 }

@@ -20,7 +20,12 @@ function do_key_down(e) {
   if (i == 68 && typeof d_down != "undefined") d_down();
   if (i == 81 && typeof q_down != "undefined") q_down();
   if (i == 69 && typeof e_down != "undefined") e_down();
+  if (i == 70 && typeof f_down != "undefined") f_down();
+  if (i == 71 && typeof g_down != "undefined") g_down();
   if (i == 82 && typeof r_down != "undefined") r_down();
+  if (i == 90 && typeof z_down != "undefined") z_down();
+  if (i == 88 && typeof x_down != "undefined") x_down();
+  if (i == 67 && typeof c_down != "undefined") c_down();
   if (i == 9 && typeof tab_down != "undefined") tab_down();
   if (i == 13 && typeof enter_down != "undefined") enter_down();
   
