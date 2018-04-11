@@ -5,7 +5,7 @@ function button(label, x, y, buttonWid, buttonHeit, func, params, toggle, label2
   this.buttonWid = buttonWid;
   this.buttonHeit = buttonHeit;
   this.toggle = toggle;
-  this.toggled = false;
+  this.toggled = true;
   this.label2 = label2;
   this.func = func;
   this.params = params;
@@ -19,7 +19,7 @@ function button(label, x, y, buttonWid, buttonHeit, func, params, toggle, label2
 	
 	if (this.visible) {
 		rectangle([offset_x + this.x, offset_y + this.y], this.buttonWid, this.buttonHeit, "black");
-		var labelToDraw = this.toggled?this.label2:this.label;
+		var labelToDraw = this.toggled?this.label:this.label2;
 		draw_label(labelToDraw, offset_x + this.x + 1, offset_y + this.y + this.buttonHeit - 2, this.color);
 	}
   }
